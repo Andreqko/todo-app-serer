@@ -12,7 +12,11 @@ export default app => {
   app.use(bodyParser.json({ limit: '20mb' }));
   // Configure cors
   app.use(cors({
-    origin: [/localhost/],
+    origin: /localhost/,
+    methods: ['POST', 'GET'],
+    allowedHeaders: [
+      'Content-Type',
+    ],
   }))
   // Check server health
   app.use('/healthcheck', (req, res) => {
